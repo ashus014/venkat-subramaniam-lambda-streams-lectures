@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.*;
 
 
 class Person {
@@ -132,8 +132,8 @@ public class Main {
 
         List<Person> people = getData();
 
-        Map<String, List<Person>> collect = people.stream()
-                .collect(groupingBy(Person::getName));
+        Map<String, List<Integer>> collect = people.stream()
+                .collect(groupingBy(Person::getName, mapping(Person::getAge, toList())));
 
         System.out.println(collect);
 
