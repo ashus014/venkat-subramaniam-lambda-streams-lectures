@@ -37,8 +37,18 @@ public class Main {
         // while lambdas are really cute, keep them that way
         // avoid urge of writing large lambdas
 
-        numbers.stream()
+//        numbers.stream()
+//                .map(String::valueOf)
+//                .forEach(System.out::println);
+
+        // two parameters as an argument
+        int sum = numbers.stream()
+                .reduce(0, (total, e) -> Integer.sum(total , e));
+
+        String ans = numbers.stream()
                 .map(String::valueOf)
-                .forEach(System.out::println);
+                .reduce("", (carry, str) -> carry.concat(str));
+
+        System.out.println(ans);
     }
 }
