@@ -160,6 +160,9 @@ public class Main {
 
         // above is an example of lazy evaluation
 
+        // lazy evaluation is possible if the function don't have any side effect
+        // don't go and start printing in your functions
+
         System.out.println(first);
     }
 
