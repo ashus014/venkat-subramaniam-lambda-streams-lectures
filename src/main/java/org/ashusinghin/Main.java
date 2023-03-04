@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
@@ -165,12 +166,15 @@ public class Main {
 
 //        System.out.println(first);
 
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5);
+//        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 1, 2, 3, 4, 5);
+//
+//        numbers.stream()
+//                .filter(e -> e % 2 == 0)
+//                .distinct()
+//                .forEach(System.out::println);
 
-        numbers.stream()
-                .filter(e -> e % 2 == 0)
-                .distinct()
-                .forEach(System.out::println);
+        Stream<Integer> iterate = Stream.iterate(100, e -> e + 1);
+        System.out.println(iterate);
     }
 
     public static boolean isGT3(int number) {
