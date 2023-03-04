@@ -3,6 +3,7 @@ package org.ashusinghin;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -65,6 +66,7 @@ public class Main {
                 new Person("paula", "FEMALE", 32)
         );
     }
+
     public static void main(String[] args) {
 
 //        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -130,12 +132,49 @@ public class Main {
 //
 //        System.out.println(double2);
 
-        List<Person> people = getData();
+//        List<Person> people = getData();
+//
+//        Map<String, List<Integer>> collect = people.stream()
+//                .collect(groupingBy(Person::getName, mapping(Person::getAge, toList())));
+//
+//        System.out.println(collect);
 
-        Map<String, List<Integer>> collect = people.stream()
-                .collect(groupingBy(Person::getName, mapping(Person::getAge, toList())));
 
-        System.out.println(collect);
+        // given an ordered list find the double of the first even number greater than 3
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 5, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 
+//        Optional<Integer> first = numbers.stream()
+//                .filter(e -> e > 3)
+//                .filter(e -> e % 2 == 0)
+//                .map(e -> e * 2)
+//                .findFirst();
+//
+//        System.out.println(first);
+        // Below is the optimized code for the above
+
+        Optional<Integer> first = numbers.stream()
+                .filter(Main::isGT3)
+                .filter(Main::isEven)
+                .map(Main::doubleIt)
+                .findFirst();
+
+        // above is an example of lazy evaluation
+
+        System.out.println(first);
+    }
+
+    public static boolean isGT3(int number) {
+        System.out.println("isGT3 : " + number);
+        return number > 3;
+    }
+
+    public static boolean isEven(int number) {
+        System.out.println("isEven : " + number);
+        return number % 2 == 0;
+    }
+
+    public static int doubleIt(int number) {
+        System.out.println("doubleIt : " + number);
+        return number * 2;
     }
 }
