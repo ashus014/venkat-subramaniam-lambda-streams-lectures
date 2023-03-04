@@ -169,7 +169,7 @@ public class Main {
 
         numbers.stream()
                 .filter(e -> e % 2 == 0)
-                .sorted()
+                .distinct()
                 .forEach(System.out::println);
     }
 
