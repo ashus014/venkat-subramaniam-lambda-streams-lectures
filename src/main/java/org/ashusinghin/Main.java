@@ -173,8 +173,14 @@ public class Main {
 //                .distinct()
 //                .forEach(System.out::println);
 
-        Stream<Integer> iterate = Stream.iterate(100, e -> e + 1);
-        System.out.println(iterate);
+//        Stream<Integer> iterate = Stream.iterate(100, e -> e + 1);
+//        System.out.println(iterate);
+
+        Stream.iterate(100, e -> e + 1)
+                .filter(x -> x%2==0)
+                .limit(5)
+                .forEach(System.out::println);
+
     }
 
     public static boolean isGT3(int number) {
